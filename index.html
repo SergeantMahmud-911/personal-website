@@ -1,84 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahmudur's Personal Website</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f7fa;
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      background: #4a90e2;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    header p {
-      font-style: italic;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahmudur's Personal Space</title>
+  <style>
+    /* প্রিমিয়াম ডার্ক থিম বেস */
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      background-color: #0b0c10;
+      color: #eeeeee;
+      line-height: 1.6;
     }
-      margin-top: 10px;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    h2 {
-      color: #4a90e2;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      background: #eaf2f8;
-      margin: 8px 0;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  </style>
+
+    /* হিরো হেডার সেকশন */
+    header {
+      position: relative;
+      background: linear-gradient(180deg, #1f2833 0%, #0b0c10 100%);
+      padding: 80px 20px;
+      text-align: center;
+      border-bottom: 2px solid #ff4500;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3.5em;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ffffff;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ff4500; /* নিওন অরেঞ্জ টোন */
+      font-style: italic;
+      margin-top: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* মেইন কন্টেইনার */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    /* আধুনিক গ্রিড কার্ড ডিজাইন */
+    section {
+      background-color: #1f2833;
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid #2f3e46;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+      font-size: 1.5em;
+      text-transform: uppercase;
+      color: #ff4500;
+      margin-top: 0;
+      border-bottom: 1px solid #ff4500;
+      padding-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .profile-info p {
+      font-size: 1.1em;
+      margin: 12px 0;
+      color: #c5a059; /* গোল্ডেন ভাইব */
+    }
+
+    .profile-info strong {
+      color: #ffffff;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      letter-spacing: 1px;
+      display: inline-block;
+      width: 120px;
+    }
+
+    /* শখের তালিকা - মডার্ন ব্যাজ স্টাইল */
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    ul li {
+      background-color: #0b0c10;
+      border: 1px solid #ff4500;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(255, 69, 0, 0.2);
+    }
+
+    .hobby-desc {
+      background-color: #ff4500;
+      color: #0b0c10;
+      padding: 15px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: center;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(255, 69, 0, 0.3);
+    }
+
+    /* মিনিমালিস্টিক ডার্ক ফুটার */
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+      background-color: #1f2833;
+      border-top: 1px solid #2f3e46;
+      color: #666666;
+      font-size: 0.9em;
+      letter-spacing: 1px;
+    }
+
+    footer span {
+      color: #ff4500;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to My World</h1>
-    <p>"Every journey begins with curiosity and courage."</p>
-  </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p><strong>Name:</strong> Mahmudur</p>
-    <p><strong>Institution:</strong> Manarat International University</p>
-    <p><strong>Current CGPA:</strong> 3.70</p>
-  </section>
+  <header>
+    <h1>Welcome to My World</h1>
+    <p>"EVERY JOURNEY BEGINS WITH CURIOSITY AND COURAGE."</p>
+  </header>
 
-  <section>
-    <h2>My Hobbies</h2>
-    <ul>
-      <li>✍️ Writing</li>
-      <li>📖 Reading</li>
-      <li>🌍 Traveling (my favorite!)</li>
-    </ul>
-    <p>Traveling is my best hobby — it opens my mind and fuels my creativity.</p>
-  </section>
+  <div class="container">
+    
+    <section class="profile-info">
+      <h2>Education & Profile</h2>
+      <p><strong>Name:</strong> Mahmudur</p>
+      <p><strong>Institution:</strong> Manarat International University</p>
+      <p><strong>Current CGPA:</strong> 3.70 ✨</p>
+    </section>
 
-  <footer>
-    <p>© 2026 Mahmudur | Built with passion</p>
-  </footer>
+    <section>
+      <h2>Involvements & Hobbies</h2>
+      <ul>
+        <li>✍️ Writing</li>
+        <li>📖 Reading</li>
+        <li>🌍 Traveling</li>
+      </ul>
+      <div class="hobby-desc">
+        "Traveling is my best hobby — it opens my mind and fuels my creativity."
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>MADE WITH <span>❤</span> BY MAHMUDUR | © 2026</p>
+  </footer>
+
 </body>
 </html>
