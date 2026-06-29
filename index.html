@@ -3,171 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahmudur's Personal Space</title>
+  <title>Mahmudur Rahman</title>
   <style>
-    /* প্রিমিয়াম ডার্ক থিম বেস */
     body {
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
-      background-color: #0b0c10;
-      color: #eeeeee;
+      font-family: 'Georgia', serif;
+      background-color: #0b0b0b;
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; /* Changed from stretch to center for better image alignment */
+      min-height: 100vh;
+      padding: 40px;
+      box-sizing: border-box; /* Ensures padding doesn't cause horizontal scrolling */
+    }
+
+    .left-section {
+      flex: 1;
+      padding-right: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left-section h1 {
+      font-size: 3em;
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+
+    .left-section h2 {
+      font-size: 1.3em;
+      color: #aaa;
+      margin-top: 0;
+    }
+
+    .left-section p {
+      font-size: 1.1em;
+      color: #ccc;
       line-height: 1.6;
     }
 
-    /* হিরো হেডার সেকশন */
-    header {
+    .hobbies {
+      margin-top: 30px;
+    }
+
+    .hobbies div {
+      background: #111;
+      border-left: 4px solid #d4af37;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .right-section {
+      flex: 1;
       position: relative;
-      background: linear-gradient(180deg, #1f2833 0%, #0b0c10 100%);
-      padding: 80px 20px;
-      text-align: center;
-      border-bottom: 2px solid #ff4500;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 3.5em;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #ffffff;
-    }
-
-    header p {
-      font-size: 1.2em;
-      color: #ff4500; /* নিওন অরেঞ্জ টোন */
-      font-style: italic;
-      margin-top: 10px;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    /* মেইন কন্টেইনার */
-    .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-
-    /* আধুনিক গ্রিড কার্ড ডিজাইন */
-    section {
-      background-color: #1f2833;
-      padding: 30px;
-      border-radius: 8px;
-      border: 1px solid #2f3e46;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    }
-
-    h2 {
-      font-size: 1.5em;
-      text-transform: uppercase;
-      color: #ff4500;
-      margin-top: 0;
-      border-bottom: 1px solid #ff4500;
-      padding-bottom: 10px;
-      letter-spacing: 1px;
-    }
-
-    .profile-info p {
-      font-size: 1.1em;
-      margin: 12px 0;
-      color: #c5a059; /* গোল্ডেন ভাইব */
-    }
-
-    .profile-info strong {
-      color: #ffffff;
-      text-transform: uppercase;
-      font-size: 0.9em;
-      letter-spacing: 1px;
-      display: inline-block;
-      width: 120px;
-    }
-
-    /* শখের তালিকা - মডার্ন ব্যাজ স্টাইল */
-    ul {
-      list-style: none;
-      padding: 0;
       display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 20px 0;
+      justify-content: center;
+      align-items: center;
     }
 
-    ul li {
-      background-color: #0b0c10;
-      border: 1px solid #ff4500;
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-size: 1.1em;
-      font-weight: bold;
-      color: #ffffff;
-      box-shadow: 0 2px 8px rgba(255, 69, 0, 0.2);
+    .right-section img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(212,175,55,0.4);
     }
 
-    .hobby-desc {
-      background-color: #ff4500;
-      color: #0b0c10;
-      padding: 15px;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 1.1em;
-      text-align: center;
-      margin-top: 20px;
-      box-shadow: 0 4px 10px rgba(255, 69, 0, 0.3);
+    .quote {
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      color: #d4af37;
+      font-style: italic;
+      font-size: 1.2em;
+      text-shadow: 0 0 10px rgba(212,175,55,0.6);
     }
 
-    /* মিনিমালিস্টিক ডার্ক ফুটার */
     footer {
       text-align: center;
-      padding: 30px;
-      margin-top: 60px;
-      background-color: #1f2833;
-      border-top: 1px solid #2f3e46;
-      color: #666666;
+      padding: 20px;
+      background: #000;
+      color: #666;
       font-size: 0.9em;
-      letter-spacing: 1px;
     }
 
-    footer span {
-      color: #ff4500;
+    /* 📱 Responsive Design for Mobile Devices */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 20px;
+      }
+      
+      .left-section {
+        padding-right: 0;
+        margin-bottom: 40px;
+      }
+      
+      .right-section {
+        width: 100%;
+      }
+      
+      .quote {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        margin-top: 15px;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Welcome to My World</h1>
-    <p>"EVERY JOURNEY BEGINS WITH CURIOSITY AND COURAGE."</p>
-  </header>
-
   <div class="container">
-    
-    <section class="profile-info">
-      <h2>Education & Profile</h2>
-      <p><strong>Name:</strong> Mahmudur</p>
-      <p><strong>Institution:</strong> Manarat International University</p>
-      <p><strong>Current CGPA:</strong> 3.70 ✨</p>
-    </section>
+    <div class="left-section">
+      <h1>Mahmudur Rahman</h1>
+      <h2>Manarat International University</h2>
+      <p><strong>Current CGPA:</strong> 3.70</p>
 
-    <section>
-      <h2>Involvements & Hobbies</h2>
-      <ul>
-        <li>✍️ Writing</li>
-        <li>📖 Reading</li>
-        <li>🌍 Traveling</li>
-      </ul>
-      <div class="hobby-desc">
-        "Traveling is my best hobby — it opens my mind and fuels my creativity."
+      <h2>About Me</h2>
+      <p>
+        I’m a passionate soul who finds beauty in Photography, adventure in Travelling, 
+        and intrigue in Reading Detective Books. I dream of a rooftop sanctuary filled 
+        with rescued cats and birds — a place where every creature greets me with joy. 
+        Cats are my weakness; if I see one on the street, I can’t help but pet it.
+      </p>
+
+      <div class="hobbies">
+        <div>📸 Photography</div>
+        <div>✈️ Travelling</div>
+        <div>📖 Reading Detective Books</div>
       </div>
-    </section>
+    </div>
 
+    <div class="right-section">
+      <img src=mahmudur-silent-evidence.jpg" alt="Mahmudur Rahman holding 'The Silent Evidence' book">
+      <div class="quote">“Every mystery hides a truth — and I’m watching.”</div>
+    </div>
   </div>
 
   <footer>
-    <p>MADE WITH <span>❤</span> BY MAHMUDUR | © 2026</p>
+    © 2026 Mahmudur Rahman | Dark & Mysterious
   </footer>
-
 </body>
 </html>
