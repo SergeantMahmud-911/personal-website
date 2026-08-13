@@ -1,155 +1,2477 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahmudur Rahman</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Georgia', serif;
-      background-color: #0b0b0b;
-      color: #e0e0e0;
-      overflow-x: hidden;
-    }
 
-    .container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center; /* Changed from stretch to center for better image alignment */
-      min-height: 100vh;
-      padding: 40px;
-      box-sizing: border-box; /* Ensures padding doesn't cause horizontal scrolling */
-    }
+    <meta charset="UTF-8">
 
-    .left-section {
-      flex: 1;
-      padding-right: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .left-section h1 {
-      font-size: 3em;
-      color: #d4af37;
-      margin-bottom: 10px;
-    }
+    <meta
+        name="description"
+        content="Personal portfolio website of Mahmudur Rahman"
+    >
 
-    .left-section h2 {
-      font-size: 1.3em;
-      color: #aaa;
-      margin-top: 0;
-    }
+    <meta
+        name="author"
+        content="Mahmudur Rahman"
+    >
 
-    .left-section p {
-      font-size: 1.1em;
-      color: #ccc;
-      line-height: 1.6;
-    }
+    <title>Mahmudur Rahman | Personal Portfolio</title>
 
-    .hobbies {
-      margin-top: 30px;
-    }
 
-    .hobbies div {
-      background: #111;
-      border-left: 4px solid #d4af37;
-      padding: 10px 15px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-    }
+    <!-- =========================
+         GOOGLE FONTS
+    ========================== -->
 
-    .right-section {
-      flex: 1;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    .right-section img {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 10px;
-      box-shadow: 0 0 25px rgba(212,175,55,0.4);
-    }
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    .quote {
-      position: absolute;
-      bottom: 20px;
-      left: 30px;
-      color: #d4af37;
-      font-style: italic;
-      font-size: 1.2em;
-      text-shadow: 0 0 10px rgba(212,175,55,0.6);
-    }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #000;
-      color: #666;
-      font-size: 0.9em;
-    }
 
-    /* 📱 Responsive Design for Mobile Devices */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        padding: 20px;
-      }
-      
-      .left-section {
-        padding-right: 0;
-        margin-bottom: 40px;
-      }
-      
-      .right-section {
-        width: 100%;
-      }
-      
-      .quote {
-        position: relative;
-        bottom: 0;
-        left: 0;
-        margin-top: 15px;
-        text-align: center;
-      }
-    }
-  </style>
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family: "Inter", sans-serif;
+
+            background: #070707;
+
+            color: #f5f5f5;
+
+            line-height: 1.7;
+
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        img {
+            max-width: 100%;
+        }
+
+
+        /* =========================================
+           VARIABLES
+        ========================================= */
+
+        :root {
+
+            --gold: #d4af37;
+
+            --gold-light: #f0d878;
+
+            --dark: #070707;
+
+            --dark-2: #0d0d0d;
+
+            --card: #111111;
+
+            --border: rgba(212, 175, 55, 0.18);
+
+            --text: #f5f5f5;
+
+            --muted: #a5a5a5;
+        }
+
+
+        /* =========================================
+           CUSTOM SCROLLBAR
+        ========================================= */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+
+        ::-webkit-scrollbar-track {
+            background: #070707;
+        }
+
+
+        ::-webkit-scrollbar-thumb {
+
+            background: var(--gold);
+
+            border-radius: 20px;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        header {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            z-index: 999;
+
+            padding: 20px 7%;
+
+            transition: 0.4s;
+        }
+
+
+        header.scrolled {
+
+            background: rgba(7, 7, 7, 0.92);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid var(--border);
+
+            padding: 14px 7%;
+        }
+
+
+        nav {
+
+            max-width: 1250px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .logo {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 30px;
+
+            font-weight: 700;
+
+            color: var(--gold);
+
+            letter-spacing: 2px;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 35px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+
+            position: relative;
+
+            color: #ddd;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: var(--gold);
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover {
+
+            color: var(--gold);
+        }
+
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 140px 7% 80px;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(212, 175, 55, 0.12),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(212, 175, 55, 0.07),
+                    transparent 30%
+                ),
+
+                #070707;
+        }
+
+
+        /* Decorative circles */
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            border: 1px solid rgba(212, 175, 55, 0.08);
+
+            border-radius: 50%;
+
+            right: -180px;
+
+            top: 120px;
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+
+            height: 350px;
+
+            border: 1px solid rgba(212, 175, 55, 0.05);
+
+            border-radius: 50%;
+
+            right: -100px;
+
+            top: 195px;
+        }
+
+
+        .hero-container {
+
+            width: 100%;
+
+            max-width: 1250px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1.15fr 0.85fr;
+
+            gap: 70px;
+
+            align-items: center;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .hero-small {
+
+            color: var(--gold);
+
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            margin-bottom: 20px;
+        }
+
+
+        .hero h1 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(55px, 8vw, 100px);
+
+            line-height: 0.98;
+
+            font-weight: 700;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero h1 span {
+
+            color: var(--gold);
+        }
+
+
+        .hero-description {
+
+            max-width: 650px;
+
+            color: #b8b8b8;
+
+            font-size: 17px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 14px 25px;
+
+            border-radius: 4px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+
+            cursor: pointer;
+        }
+
+
+        .btn-primary {
+
+            background: var(--gold);
+
+            color: #080808;
+        }
+
+
+        .btn-primary:hover {
+
+            background: var(--gold-light);
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+
+        .btn-outline {
+
+            border: 1px solid rgba(212, 175, 55, 0.5);
+
+            color: var(--gold);
+        }
+
+
+        .btn-outline:hover {
+
+            background: var(--gold);
+
+            color: #080808;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================
+           PROFILE PHOTO
+        ========================================= */
+
+        .profile-area {
+
+            display: flex;
+
+            justify-content: center;
+
+            position: relative;
+        }
+
+
+        .profile-glow {
+
+            position: absolute;
+
+            width: 380px;
+
+            height: 380px;
+
+            background: rgba(212, 175, 55, 0.10);
+
+            filter: blur(70px);
+
+            border-radius: 50%;
+        }
+
+
+        .profile-wrapper {
+
+            position: relative;
+
+            width: 350px;
+
+            height: 430px;
+
+            padding: 8px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f0d878,
+                    #6e5510,
+                    #d4af37,
+                    #3e3007
+                );
+
+            box-shadow:
+
+                0 0 35px rgba(212, 175, 55, 0.18),
+
+                0 25px 80px rgba(0, 0, 0, 0.7);
+
+            animation: floating 5s ease-in-out infinite;
+        }
+
+
+        .profile-wrapper::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: -12px;
+
+            border: 1px solid rgba(212, 175, 55, 0.2);
+
+            border-radius: 28px;
+
+            z-index: -1;
+        }
+
+
+        .profile-wrapper img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            border-radius: 16px;
+
+            background: #111;
+        }
+
+
+        @keyframes floating {
+
+            0%,
+            100% {
+
+                transform: translateY(0);
+            }
+
+            50% {
+
+                transform: translateY(-12px);
+            }
+        }
+
+
+        /* =========================================
+           GENERAL SECTION
+        ========================================= */
+
+        section {
+
+            padding: 110px 7%;
+
+            position: relative;
+        }
+
+
+        .section-container {
+
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+
+        .section-heading {
+
+            margin-bottom: 55px;
+        }
+
+
+        .section-label {
+
+            color: var(--gold);
+
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-title {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(38px, 5vw, 55px);
+
+            line-height: 1.1;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-description {
+
+            color: var(--muted);
+
+            max-width: 650px;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================================
+           ABOUT
+        ========================================= */
+
+        .about {
+
+            background: #0a0a0a;
+        }
+
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns: 0.8fr 1.2fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+
+        .about-box {
+
+            background: var(--card);
+
+            border: 1px solid #202020;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .about-box::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+
+            height: 100px;
+
+            background: rgba(212, 175, 55, 0.08);
+
+            border-radius: 50%;
+
+            right: -30px;
+
+            top: -30px;
+        }
+
+
+        .about-number {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 80px;
+
+            line-height: 1;
+
+            color: var(--gold);
+
+            margin-bottom: 10px;
+        }
+
+
+        .about-number-text {
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+        .about-content p {
+
+            color: #bdbdbd;
+
+            font-size: 17px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .about-highlight {
+
+            color: var(--gold);
+        }
+
+
+        /* =========================================
+           EDUCATION
+        ========================================= */
+
+        .education-card {
+
+            background: linear-gradient(
+                135deg,
+                #111111,
+                #0c0c0c
+            );
+
+            border: 1px solid #242424;
+
+            border-radius: 12px;
+
+            padding: 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            transition: 0.3s;
+        }
+
+
+        .education-card:hover {
+
+            border-color: var(--border);
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .education-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            min-width: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(212, 175, 55, 0.08);
+
+            border: 1px solid rgba(212, 175, 55, 0.2);
+
+            font-size: 27px;
+        }
+
+
+        .education-content h3 {
+
+            color: var(--gold);
+
+            font-size: 22px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .education-content p {
+
+            color: #999;
+
+            font-size: 15px;
+        }
+
+
+        .cgpa {
+
+            margin-left: auto;
+
+            text-align: center;
+
+            min-width: 120px;
+        }
+
+
+        .cgpa strong {
+
+            display: block;
+
+            color: var(--gold);
+
+            font-size: 34px;
+
+            line-height: 1;
+        }
+
+
+        .cgpa span {
+
+            color: #777;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================================
+           HOBBIES
+        ========================================= */
+
+        .hobbies {
+
+            background: #080808;
+        }
+
+
+        .hobby-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .hobby-card {
+
+            background: #101010;
+
+            border: 1px solid #222;
+
+            border-radius: 12px;
+
+            padding: 35px 30px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: 0.35s;
+        }
+
+
+        .hobby-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: 0;
+
+            width: 0;
+
+            height: 3px;
+
+            background: var(--gold);
+
+            transition: 0.4s;
+        }
+
+
+        .hobby-card:hover {
+
+            transform: translateY(-8px);
+
+            border-color: rgba(212, 175, 55, 0.3);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+
+        .hobby-card:hover::before {
+
+            width: 100%;
+        }
+
+
+        .hobby-icon {
+
+            font-size: 42px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .hobby-card h3 {
+
+            color: #eee;
+
+            font-size: 23px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .hobby-card p {
+
+            color: #999;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================================
+           EXPERTISE
+        ========================================= */
+
+        .expertise {
+
+            background: #0a0a0a;
+        }
+
+
+        .skill-layout {
+
+            display: grid;
+
+            grid-template-columns: 0.8fr 1.2fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+
+        .skill-intro h3 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .skill-intro p {
+
+            color: #999;
+
+            font-size: 16px;
+        }
+
+
+        .skill-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 25px;
+        }
+
+
+        .skill-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+        }
+
+
+        .skill-name {
+
+            font-size: 14px;
+
+            color: #ddd;
+        }
+
+
+        .skill-percent {
+
+            color: var(--gold);
+
+            font-size: 13px;
+        }
+
+
+        .skill-bar {
+
+            width: 100%;
+
+            height: 7px;
+
+            background: #202020;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+
+        .skill-progress {
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #8f7017,
+                    #d4af37,
+                    #f0d878
+                );
+
+            border-radius: 20px;
+
+            width: 0;
+
+            transition: width 1.5s ease;
+        }
+
+
+        /* =========================================
+           STATS
+        ========================================= */
+
+        .stats {
+
+            padding-top: 60px;
+
+            padding-bottom: 60px;
+
+            background: #080808;
+        }
+
+
+        .stats-grid {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            border-top: 1px solid #222;
+
+            border-bottom: 1px solid #222;
+        }
+
+
+        .stat {
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+            border-right: 1px solid #222;
+        }
+
+
+        .stat:last-child {
+
+            border-right: none;
+        }
+
+
+        .stat-number {
+
+            font-family: "Playfair Display", serif;
+
+            color: var(--gold);
+
+            font-size: 50px;
+
+            line-height: 1;
+
+            margin-bottom: 10px;
+        }
+
+
+        .stat-label {
+
+            color: #888;
+
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================================
+           QUOTE
+        ========================================= */
+
+        .quote {
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(212, 175, 55, 0.08),
+                    transparent 50%
+                );
+        }
+
+
+        .quote-mark {
+
+            font-family: Georgia, serif;
+
+            color: var(--gold);
+
+            font-size: 70px;
+
+            line-height: 0.5;
+        }
+
+
+        .quote-text {
+
+            max-width: 850px;
+
+            margin: 25px auto;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(28px, 4vw, 45px);
+
+            line-height: 1.3;
+
+            color: #eee;
+        }
+
+
+        .quote-author {
+
+            color: #777;
+
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 3px;
+        }
+
+
+        /* =========================================
+           CONTACT
+        ========================================= */
+
+        .contact {
+
+            background: #0a0a0a;
+        }
+
+
+        .contact-box {
+
+            max-width: 900px;
+
+            margin: auto;
+
+            text-align: center;
+
+            padding: 65px 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #121212,
+                    #0c0c0c
+                );
+
+            border: 1px solid #242424;
+
+            border-radius: 16px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .contact-box::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+
+            height: 250px;
+
+            border-radius: 50%;
+
+            background: rgba(212, 175, 55, 0.06);
+
+            top: -120px;
+
+            left: -100px;
+        }
+
+
+        .contact-box h2 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .contact-box p {
+
+            max-width: 600px;
+
+            margin: 0 auto 30px;
+
+            color: #999;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+
+            padding: 35px 7%;
+
+            background: #050505;
+
+            border-top: 1px solid #1c1c1c;
+        }
+
+
+        .footer-inner {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        .footer-name {
+
+            color: var(--gold);
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 20px;
+        }
+
+
+        .footer-text {
+
+            color: #666;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           BACK TO TOP
+        ========================================= */
+
+        #backToTop {
+
+            position: fixed;
+
+            right: 25px;
+
+            bottom: 25px;
+
+            width: 45px;
+
+            height: 45px;
+
+            border: 1px solid rgba(212, 175, 55, 0.5);
+
+            background: #111;
+
+            color: var(--gold);
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 18px;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: 0.3s;
+
+            z-index: 500;
+        }
+
+
+        #backToTop.show {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        #backToTop:hover {
+
+            background: var(--gold);
+
+            color: #080808;
+        }
+
+
+        /* =========================================
+           MOBILE MENU BUTTON
+        ========================================= */
+
+        .menu-button {
+
+            display: none;
+
+            font-size: 25px;
+
+            color: var(--gold);
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .hero-container {
+
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+
+            .hero-description {
+
+                margin-left: auto;
+
+                margin-right: auto;
+            }
+
+
+            .hero-buttons {
+
+                justify-content: center;
+            }
+
+
+            .profile-area {
+
+                margin-top: 40px;
+            }
+
+
+            .about-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .skill-layout {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .hobby-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .stats-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .stat {
+
+                border-right: none;
+
+                border-bottom: 1px solid #222;
+            }
+
+
+            .stat:last-child {
+
+                border-bottom: none;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+
+                padding: 18px 5%;
+            }
+
+
+            .nav-links {
+
+                position: absolute;
+
+                top: 75px;
+
+                left: 5%;
+
+                right: 5%;
+
+                display: none;
+
+                flex-direction: column;
+
+                gap: 20px;
+
+                padding: 25px;
+
+                background: #101010;
+
+                border: 1px solid #222;
+
+                border-radius: 10px;
+
+                text-align: center;
+            }
+
+
+            .nav-links.active {
+
+                display: flex;
+            }
+
+
+            .menu-button {
+
+                display: block;
+            }
+
+
+            .hero {
+
+                padding-left: 5%;
+
+                padding-right: 5%;
+            }
+
+
+            section {
+
+                padding-left: 5%;
+
+                padding-right: 5%;
+            }
+
+
+            .profile-wrapper {
+
+                width: 290px;
+
+                height: 360px;
+            }
+
+
+            .education-card {
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+
+            .cgpa {
+
+                margin-left: 0;
+
+                margin-top: 15px;
+            }
+
+
+            .footer-inner {
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .hero h1 {
+
+                font-size: 52px;
+            }
+
+
+            .profile-wrapper {
+
+                width: 260px;
+
+                height: 325px;
+            }
+
+
+            .contact-box h2 {
+
+                font-size: 34px;
+            }
+        }
+
+    </style>
+
 </head>
+
+
 <body>
-  <div class="container">
-    <div class="left-section">
-      <h1>Mahmudur Rahman</h1>
-      <h2>Manarat International University</h2>
-      <p><strong>Current CGPA:</strong> 3.70</p>
 
-      <h2>About Me</h2>
-      <p>
-        I’m a passionate soul who finds beauty in Photography, adventure in Travelling, 
-        and intrigue in Reading Detective Books. I dream of a rooftop sanctuary filled 
-        with rescued cats and birds — a place where every creature greets me with joy. 
-        Cats are my weakness; if I see one on the street, I can’t help but pet it.
-      </p>
 
-      <div class="hobbies">
-        <div>📸 Photography</div>
-        <div>✈️ Travelling</div>
-        <div>📖 Reading Detective Books</div>
-      </div>
-    </div>
+    <!-- =====================================
+         NAVIGATION
+    ====================================== -->
 
-    <div class="right-section">
-      <img src="mahmudur-silent-evidence.png" alt="Mahmudur Rahman holding 'The Silent Evidence' book">
-      <div class="quote">“Every mystery hides a truth — and I’m watching.”</div>
-    </div>
-  </div>
+    <header id="header">
 
-  <footer>
-    © 2026 Mahmudur Rahman | Dark & Mysterious
-  </footer>
+        <nav>
+
+            <a href="#home" class="logo">
+                MR.
+            </a>
+
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#education">Education</a>
+                </li>
+
+                <li>
+                    <a href="#hobbies">Hobbies</a>
+                </li>
+
+                <li>
+                    <a href="#expertise">Expertise</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+
+            <div class="menu-button" id="menuButton">
+                ☰
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================
+         HERO SECTION
+    ====================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-container">
+
+
+            <div class="hero-content">
+
+                <div class="hero-small">
+                    Personal Portfolio
+                </div>
+
+
+                <h1>
+                    Mahmudur
+                    <br>
+                    <span>Rahman.</span>
+                </h1>
+
+
+                <p class="hero-description">
+
+                    I am a student of
+                    <strong>Manarat International University</strong>
+                    with a passion for travelling, photography,
+                    food and learning new things.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#about"
+                        class="btn btn-primary"
+                    >
+                        Discover More
+                    </a>
+
+
+                    <a
+                        href="#contact"
+                        class="btn btn-outline"
+                    >
+                        Get In Touch
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROFILE IMAGE -->
+
+            <div class="profile-area">
+
+                <div class="profile-glow"></div>
+
+
+                <div class="profile-wrapper">
+
+                    <!--
+                        YOUR PROFILE PHOTO
+
+                        Put your photo here:
+
+                        images/profile.jpg
+                    -->
+
+                    <img
+                        src="images/profile.jpg"
+                        alt="Mahmudur Rahman"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         ABOUT SECTION
+    ====================================== -->
+
+    <section class="about" id="about">
+
+        <div class="section-container">
+
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    Introduction
+                </div>
+
+                <h2 class="section-title">
+                    About Me
+                </h2>
+
+            </div>
+
+
+
+            <div class="about-grid">
+
+
+                <div class="about-box">
+
+                    <div class="about-number">
+                        01
+                    </div>
+
+                    <div class="about-number-text">
+                        A little introduction about myself
+                    </div>
+
+                </div>
+
+
+
+                <div class="about-content">
+
+                    <p>
+
+                        Hello! My name is
+                        <span class="about-highlight">
+                            Mahmudur Rahman
+                        </span>.
+
+                        I am currently studying at
+                        <span class="about-highlight">
+                            Manarat International University
+                        </span>.
+
+                    </p>
+
+
+                    <p>
+
+                        I enjoy travelling to new places,
+                        discovering different experiences,
+                        enjoying delicious food and capturing
+                        memorable moments through photography.
+
+                    </p>
+
+
+                    <p>
+
+                        I believe that every experience gives us
+                        an opportunity to learn something new.
+                        My goal is to continue improving myself,
+                        developing useful skills and creating a
+                        meaningful future.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         EDUCATION SECTION
+    ====================================== -->
+
+    <section id="education">
+
+        <div class="section-container">
+
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    Academic Journey
+                </div>
+
+                <h2 class="section-title">
+                    Education
+                </h2>
+
+                <p class="section-description">
+
+                    My current academic journey and educational
+                    achievement.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="education-card">
+
+
+                <div class="education-icon">
+                    🎓
+                </div>
+
+
+                <div class="education-content">
+
+                    <h3>
+                        Manarat International University
+                    </h3>
+
+                    <p>
+                        Current University Student
+                    </p>
+
+                </div>
+
+
+                <div class="cgpa">
+
+                    <strong>
+                        3.50
+                    </strong>
+
+                    <span>
+                        Current CGPA
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         HOBBIES SECTION
+    ====================================== -->
+
+    <section class="hobbies" id="hobbies">
+
+        <div class="section-container">
+
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    What I Love
+                </div>
+
+                <h2 class="section-title">
+                    My Hobbies
+                </h2>
+
+                <p class="section-description">
+
+                    These are some of the activities that I
+                    enjoy in my free time.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="hobby-grid">
+
+
+                <!-- TRAVELLING -->
+
+                <div class="hobby-card">
+
+                    <div class="hobby-icon">
+                        ✈️
+                    </div>
+
+                    <h3>
+                        Travelling
+                    </h3>
+
+                    <p>
+
+                        I love exploring new places,
+                        experiencing different environments
+                        and creating unforgettable memories.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- EATING -->
+
+                <div class="hobby-card">
+
+                    <div class="hobby-icon">
+                        🍽️
+                    </div>
+
+                    <h3>
+                        Eating
+                    </h3>
+
+                    <p>
+
+                        I enjoy discovering different foods,
+                        trying new flavours and experiencing
+                        different cuisines.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- PHOTOGRAPHY -->
+
+                <div class="hobby-card">
+
+                    <div class="hobby-icon">
+                        📷
+                    </div>
+
+                    <h3>
+                        Photography
+                    </h3>
+
+                    <p>
+
+                        Photography allows me to capture
+                        beautiful moments and preserve
+                        memories through images.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         EXPERTISE SECTION
+    ====================================== -->
+
+    <section class="expertise" id="expertise">
+
+        <div class="section-container">
+
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    My Ability
+                </div>
+
+                <h2 class="section-title">
+                    Expertise
+                </h2>
+
+            </div>
+
+
+
+            <div class="skill-layout">
+
+
+                <div class="skill-intro">
+
+                    <h3>
+                        Basic Computer Operation
+                    </h3>
+
+                    <p>
+
+                        I have basic knowledge of computer
+                        operation and common digital tasks.
+                        I am interested in continuously
+                        improving my technical abilities.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="skill-list">
+
+
+                    <div class="skill">
+
+                        <div class="skill-top">
+
+                            <span class="skill-name">
+                                Basic Computer Operation
+                            </span>
+
+                            <span class="skill-percent">
+                                85%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+
+                            <div
+                                class="skill-progress"
+                                data-width="85%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="skill">
+
+                        <div class="skill-top">
+
+                            <span class="skill-name">
+                                Internet & Web Browsing
+                            </span>
+
+                            <span class="skill-percent">
+                                80%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+
+                            <div
+                                class="skill-progress"
+                                data-width="80%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="skill">
+
+                        <div class="skill-top">
+
+                            <span class="skill-name">
+                                File & Document Management
+                            </span>
+
+                            <span class="skill-percent">
+                                80%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+
+                            <div
+                                class="skill-progress"
+                                data-width="80%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="skill">
+
+                        <div class="skill-top">
+
+                            <span class="skill-name">
+                                Digital Communication
+                            </span>
+
+                            <span class="skill-percent">
+                                75%
+                            </span>
+
+                        </div>
+
+                        <div class="skill-bar">
+
+                            <div
+                                class="skill-progress"
+                                data-width="75%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         STATS
+    ====================================== -->
+
+    <section class="stats">
+
+        <div class="stats-grid">
+
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    3.50
+                </div>
+
+                <div class="stat-label">
+                    Current CGPA
+                </div>
+
+            </div>
+
+
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    03
+                </div>
+
+                <div class="stat-label">
+                    Main Hobbies
+                </div>
+
+            </div>
+
+
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    01
+                </div>
+
+                <div class="stat-label">
+                    Core Expertise
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         QUOTE SECTION
+    ====================================== -->
+
+    <section class="quote">
+
+        <div class="section-container">
+
+            <div class="quote-mark">
+                “
+            </div>
+
+
+            <div class="quote-text">
+
+                Every new place creates a memory,
+                every new experience creates a lesson.
+
+            </div>
+
+
+            <div class="quote-author">
+
+                Mahmudur Rahman
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         CONTACT SECTION
+    ====================================== -->
+
+    <section class="contact" id="contact">
+
+        <div class="section-container">
+
+            <div class="contact-box">
+
+                <div class="section-label">
+                    Thank You
+                </div>
+
+
+                <h2>
+                    Let's Connect
+                </h2>
+
+
+                <p>
+
+                    Thank you for visiting my personal portfolio.
+                    I hope you enjoyed learning a little about
+                    me, my interests and my academic journey.
+
+                </p>
+
+
+                <a
+                    href="#home"
+                    class="btn btn-primary"
+                >
+                    Back to Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+
+            <div class="footer-name">
+                Mahmudur Rahman
+            </div>
+
+
+            <div class="footer-text">
+
+                © 2026 Mahmudur Rahman.
+                All Rights Reserved.
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- BACK TO TOP -->
+
+    <button
+        id="backToTop"
+        aria-label="Back to top"
+    >
+        ↑
+    </button>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+
+        /* =====================================
+           NAVBAR SCROLL EFFECT
+        ====================================== */
+
+        const header =
+            document.getElementById("header");
+
+
+        window.addEventListener("scroll", function () {
+
+            if (window.scrollY > 50) {
+
+                header.classList.add("scrolled");
+
+            } else {
+
+                header.classList.remove("scrolled");
+
+            }
+
+        });
+
+
+
+        /* =====================================
+           MOBILE MENU
+        ====================================== */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuButton.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+        });
+
+
+        document.querySelectorAll(".nav-links a")
+            .forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    navLinks.classList.remove("active");
+
+                });
+
+            });
+
+
+
+        /* =====================================
+           SKILL BAR ANIMATION
+        ====================================== */
+
+        const skillBars =
+            document.querySelectorAll(".skill-progress");
+
+
+        const skillObserver =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            const width =
+                                entry.target.dataset.width;
+
+                            entry.target.style.width =
+                                width;
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.4
+                }
+            );
+
+
+        skillBars.forEach(function (bar) {
+
+            skillObserver.observe(bar);
+
+        });
+
+
+
+        /* =====================================
+           BACK TO TOP
+        ====================================== */
+
+        const backToTop =
+            document.getElementById("backToTop");
+
+
+        window.addEventListener("scroll", function () {
+
+            if (window.scrollY > 500) {
+
+                backToTop.classList.add("show");
+
+            } else {
+
+                backToTop.classList.remove("show");
+
+            }
+
+        });
+
+
+        backToTop.addEventListener("click", function () {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        });
+
+
+    </script>
+
+
 </body>
+
 </html>
